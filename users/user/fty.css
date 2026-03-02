@@ -251,6 +251,10 @@
             table {
                 width: 100%;
                 border-collapse: collapse;
+                background: rgba(206, 239, 255, 0.838);     /* semi-transparent white */
+                backdrop-filter: blur(12px);               /* frosted glass blur */
+                -webkit-backdrop-filter: blur(12px);       /* Safari support */
+                border-radius: 12px;
             }
             th, td {
                 padding: 12px;
@@ -258,7 +262,7 @@
                 text-align: left;
             }
             th {
-                background: #6a11cb;
+                background: linear-gradient(180deg, rgb(108, 163, 203), rgb(186, 209, 255));
                 color: #fff;
             }
             tr:hover { background: #f1f1f1; }
