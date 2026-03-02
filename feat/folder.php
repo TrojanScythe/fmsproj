@@ -76,21 +76,73 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 </script>
 
 <div class="center-box">
-        <h2>Folder</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+<div class="explorer-container">
+    <div class="upload-header">
+        <button class="upload-btn">Upload +</button>
+        <!-- or your search bar / other controls -->
+    </div>
+    
+    <div class="folder-list">
+        <div class="folder-item">
+            <div class="folder-icon-name">
+                <div class="folder-icon">📁</div>
+                <span class="folder-name">records</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
+
+        <div class="folder-item">
+            <div class="folder-icon-name">
+                <div class="folder-icon">📁</div>
+                <span class="folder-name">sched</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <div class="progress-bar"></div>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
+
+        <!-- add more items similarly for cp, notvirus, etc. -->
+    </div>
+</div><div class="explorer-container">
+    <div class="upload-header">
+        <button class="upload-btn">Upload +</button>
+        <!-- or your search bar / other controls -->
+    </div>
+    
+    <div class="folder-list">
+        <div class="folder-item">
+            <div class="folder-icon-name">
+                <div class="folder-icon">📁</div>
+                <span class="folder-name">records</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
+
+        <div class="folder-item">
+            <div class="folder-icon-name">
+                <div class="folder-icon">📁</div>
+                <span class="folder-name">sched</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <div class="progress-bar"></div>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
+
+       
     </div>
 </div>
 

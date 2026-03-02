@@ -29,3 +29,123 @@
                 border-bottom: 1px solid #ccc;
                 text-align: left;
             }
+
+/* IDK */
+.explorer-container {
+    background: rgba(255, 255, 255, 0.18);     /* semi-transparent white */
+    backdrop-filter: blur(12px);               /* frosted glass blur */
+    -webkit-backdrop-filter: blur(12px);       /* Safari support */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 16px 20px;
+    margin: 20px auto;
+    max-width: 720px;
+    min-height: 420px;
+}
+
+/* Folder list wrapper */
+.folder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;           /* tight spacing like Windows */
+}
+
+/* Individual folder/file row */
+.folder-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.folder-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(2px);
+}
+
+/* Icon area (folder icon + name) */
+.folder-icon-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.folder-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    font-size: 22px;          /* using emoji as icon placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Folder name */
+.folder-name {
+    font-size: 15px;
+    color: #1e1e2e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+/* Right-side actions (star, eye, more) */
+.folder-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 16px;
+}
+
+.action-icon {
+    font-size: 18px;
+    color: #5a5a8a;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.15s;
+}
+
+.action-icon:hover {
+    color: #3a3aff;
+    transform: scale(1.15);
+}
+
+/* Special styling for "Upload" area / header if needed */
+.upload-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.upload-btn {
+    background: linear-gradient(90deg, #8b7fd9, #6a5fd1);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.upload-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(100, 80, 220, 0.35);
+}
+
+/* Optional: progress bar style under "sched" */
+.progress-bar {
+    height: 4px;
+    background: rgba(100, 220, 120, 0.7);
+    border-radius: 4px;
+    width: 60%;
+    margin-left: 36px;     /* align under name */
+}
