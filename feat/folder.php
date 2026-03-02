@@ -78,7 +78,21 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 
 <div class="main-content">
     <div class="center-box">
-    <h1>what to do</h1>
+        <h2>Folder</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

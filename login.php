@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <style>
                 
         .login-box {
-            position: relative; /* <<< important for absolute positioning */
+            position: relative; 
             background: #ffffff;
-            padding: 60px 35px 35px 35px; /* extra top padding for image */
+            padding: 60px 35px 35px 35px; 
             border-radius: 15px;
             width: 320px;
             text-align: center;
@@ -53,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         .login-box .profile-img {
             position: absolute;
-            top: -50px;              /* half of image height */
-            left: 50%;               /* center horizontally */
+            top: -50px;              
+            left: 50%;               
             transform: translateX(-50%);
             width: 130px;
             height: 130px;
