@@ -40,8 +40,8 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     padding: 16px 20px;
     margin: 20px auto;
-    max-width: 720px;
-    min-height: 420px;
+    max-width: 900px;
+    min-height: 560px;
 }
 
 /* Folder list wrapper */

@@ -85,7 +85,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     <div class="folder-list">
         <div class="folder-item">
             <div class="folder-icon-name">
-                <div class="folder-icon">📁</div>
+                <div class="folder-icon"><img src="/fms/uploads/icon/fold.png"></div>
                 <span class="folder-name">records</span>
             </div>
             <div class="folder-actions">
@@ -97,7 +97,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 
         <div class="folder-item">
             <div class="folder-icon-name">
-                <div class="folder-icon">📁</div>
+                <div class="folder-icon"><img src="/fms/uploads/icon/fold.png"></div>
                 <span class="folder-name">sched</span>
             </div>
             <div class="folder-actions">
