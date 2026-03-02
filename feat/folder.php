@@ -76,8 +76,10 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 </script>
 
 
-<div class="center-box">
+<div>
+    <div class="center-box">
     <h1>what to do</h1>
+    </div>
 </div>
 
 
