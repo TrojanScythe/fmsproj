@@ -260,9 +260,14 @@
                 padding: 12px;
                 border-bottom: 1px solid #ccc;
                 text-align: left;
+                border-radius: 12px;
             }
             th {
-                background: linear-gradient(180deg, rgb(108, 163, 203), rgb(186, 209, 255));
+                background: linear-gradient(180deg, rgb(115, 105, 171), rgb(134, 149, 179));
                 color: #fff;
+                border-radius: 12px;
             }
-            tr:hover { background: #f1f1f1; }
+            tr:hover { 
+                background: #f1f1f1;
+                border-radius: 12px;
+            }
