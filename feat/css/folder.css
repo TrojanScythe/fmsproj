@@ -4,7 +4,7 @@
     align-items: center;
     min-height: calc(100vh - 60px);
     width: 100%;
-    padding-top: 60px;
+    padding-top: 45px;
     background: linear-gradient(80deg, #5e5864, #c3cfe4);
     border-radius: 14px;
 }
