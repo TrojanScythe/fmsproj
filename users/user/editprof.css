@@ -1,0 +1,258 @@
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: Arial, sans-serif !important;
+            background: linear-gradient(135deg, #706081, #b3c2dd) !important;
+            display: block !important;
+            justify-content: unset !important;
+            align-items: unset !important;
+            height: auto !important;
+        }
+        /* Main content adjustments */
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 60px); /* Account for navbar height */
+            width: 100%;
+            padding-top: 60px; /* Account for fixed navbar */
+        }
+                
+        .tbox {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+                /* Top navbar */
+        .top-nav {
+            width: 100%;
+            height: 70px; /* Fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Changed to flex-end to push content to right */
+            background: linear-gradient(90deg, #cbbade, #a6bde7);
+            padding: 0 12px;
+            border-bottom: 1px solid #ccc;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            /* Logo */
+            .top-nav .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            }
+
+            /* Menu links */
+            .top-nav .menu a {
+            margin-left: 50px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: color 0.2s;
+            }
+
+            .top-nav .menu a:hover {
+            color: #007bff;     
+            }
+                        /* Make menu items flex nicely */
+            .menu {
+                margin-left: 45px; /* Space before dropdown */
+            }
+            .nav-left {
+                display: flex;
+                align-items: center;
+            }
+            /* Search bar inside navbar */
+            .search-bar {
+                display: flex;
+                align-items: center;
+                background: #d8dfee;
+                padding: 6px 12px;
+                border-radius: 10px;
+                width: 250px;
+                max-width: 100%;
+                height: 30px;
+            }
+            /* Search bar container - positioned beside sidebar button */
+            .search-container {
+                position: fixed;
+                top: 12px; /* Same level as toggle button */
+                left: 70px; /* Positioned beside the sidebar button */
+                z-index: 1000;
+            }
+           .search-bar input {
+                border: none;
+                background: transparent;
+                outline: none;
+                padding: 6px;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+
+
+            .search-bar button {
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 16px;
+                padding: 4px 8px;
+            }
+            .search-bar button:hover {
+                color: #007bff;
+            }
+
+
+
+            /* Dropdown container */
+            .dropdown {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+            .user-icon {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 2px solid #393939;
+                margin-right: 30px;
+            }
+                                    /* Dropdown button (Profile link) */
+            .dropbtn {
+                text-decoration: none;
+                color: #333;
+                font-size: 1rem;
+                padding: 8px 12px;
+                cursor: pointer;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                right: 0;
+                top: 45px;
+                min-width: 150px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+                border-radius: 8px;
+                z-index: 1000;
+            }
+
+            .dropdown-content a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #333;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+                color: #007bff;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+
+            /* SIDEBARRRRR */
+            /* Sidebar initially hidden to the left */
+            .sidebar {
+                width: 90px;
+                background: linear-gradient(34deg, #857a91, #7d8eae);
+                padding: 10px;
+                margin-top: 75px;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                position: fixed;       /* overlay mode */
+                top: 0;
+                left: -200px;          /* hidden initially */
+                height: 100%;
+                transition: left 0.3s;
+                z-index: 1000;
+                border-radius: 15px;
+            }
+
+            /* Sidebar visible */
+            .sidebar.active {
+                left: 0;
+            }
+
+            /* Sidebar buttons */
+            .sidebar button {
+                padding: 8px;
+                border: none;
+                background: none;       /* no background color */
+                cursor: pointer;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.2s, background 0.2s;
+            }
+
+            .sidebar button img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+
+            .sidebar button:hover {
+                transform: scale    (1.1);   /* slight zoom on hover */
+                background: rgba(255,255,255,0.1);  /* subtle highlight */
+            }
+
+            /* Toggle button */
+            .toggle-btn {
+                position: fixed;
+                top: 12px; /* Adjusted to align with navbar */
+                left: 14px;
+                z-index: 1100;
+                font-size: 24px;
+                background: linear-gradient(40deg, #cbbade, #a6bde7);
+                color: white;
+                border: none;
+                padding: 10px 12px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+
+            /* Main content with some padding */
+            .main-content {
+                flex: 1;
+                padding: 30px;
+                margin-left: 0; /* no shift by default */
+            }
+
+        /* FORM         DO NOT INCLUDE IN THE DASHBOARD RECREATION */ 
+        .container {
+            max-width: 500px; margin: 0 auto;
+            background: #fff; padding: 30px; border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        h2 { text-align: center; margin-bottom: 20px; }
+        input, textarea {
+            width: 100%; padding: 10px; margin: 10px 0;
+            border-radius: 8px; border: 1px solid #ccc; font-size: 15px;
+        }
+        button.submit-btn {
+            width: 100%; padding: 12px;
+            background: #6a11cb; color: #fff; border: none;
+            border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.3s;
+        }
+        button.submit-btn:hover { background: #540fa5; }
+
+        .message { color: green; text-align: center; margin-bottom: 15px; }
+        .nav-link { display:block; margin-top:10px; text-align:center; text-decoration:none; color:#333; }
+        .nav-link:hover { color:#007bff; }
