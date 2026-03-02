@@ -75,9 +75,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
         });
 </script>
 
-
-<div class="main-content">
-    <div class="center-box">
+<div class="center-box">
         <h2>Folder</h2>
         <table>
             <thead>
