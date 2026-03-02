@@ -32,10 +32,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
         <div class="dropdown-content">
             <a href="/fms/users/viewprof.php">View Profile</a>
             <a href="/fms/users/editprof.php">Edit Profile</a>
-<<<<<<< HEAD
-=======
             <a href="/fms/logout.php">Logout</a>
->>>>>>> 138518f6e59ce423606b0324a32920fe0a3ed86f
         </div>
     </div>
 </div>

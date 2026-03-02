@@ -32,10 +32,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
         <div class="dropdown-content">
             <a href="/fms/users/viewprof.php">View Profile</a>
             <a href="/fms/users/editprof.php">Edit Profile</a>
-<<<<<<< HEAD
-=======
             <a href="/fms/logout.php">Logout</a>
->>>>>>> 138518f6e59ce423606b0324a32920fe0a3ed86f
         </div>
     </div>
 </div>
@@ -43,19 +40,19 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 <!-- HTML -->
   <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 <div class="sidebar" id="sidebar">
-    <button onclick="window.location.href='/fms/dashboard.php'">
+                                                     <button onclick="window.location.href='/fms/dashboard.php'">
         <img src="/fms/uploads/icon/db.png" alt="Dashboard" title="Dashboard">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/feat/folder.php'">
         <img src="/fms/uploads/icon/folder.png" alt="Folders" title="Folders">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/feat/document.php'">
         <img src="/fms/uploads/icon/doc.png" alt="Document" title="Document">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/feat/media.php'">
         <img src="/fms/uploads/icon/media.png" alt="Media" title="Media">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/feat.favorite.php'">
         <img src="/fms/uploads/icon/fav.png" alt="Favorite" title="Favorite">
     </button>
     <button onclick="window.location.href='/fms/users/faculty.php'">
