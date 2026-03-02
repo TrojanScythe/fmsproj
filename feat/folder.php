@@ -106,8 +106,30 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
                 <span class="action-icon">⋯</span>
             </div>
         </div>
+                <div class="folder-item">
+            <div class="folder-icon-name">
+                <div><img src="/fms/uploads/icon/fold.png" class="folder-icon"></div>
+                <span class="folder-name">cp</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
+                <div class="folder-item">
+            <div class="folder-icon-name">
+                <div><img src="/fms/uploads/icon/fold.png" class="folder-icon"></div>
+                <span class="folder-name">notvirus</span>
+            </div>
+            <div class="folder-actions">
+                <span class="action-icon">★</span>
+                <span class="action-icon">👁</span>
+                <span class="action-icon">⋯</span>
+            </div>
+        </div>
 
-        <!-- add more items similarly for cp, notvirus, etc. -->
+        <!-- repeat the same elements above to add more items similarly for cp, notvirus, etc. -->
     </div>
 </div>
 
