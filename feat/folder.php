@@ -7,6 +7,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 <head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/fms/cssshi/dashboard.css"></link>
+    <link rel="stylesheet" type="text/css" href="/fms/feat/css/folder.css"></link>
 </head>
 
 <body>
@@ -75,7 +76,9 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 </script>
 
 
-
+<div class="center-box">
+    <h1>what to do</h1>
+</div>
 
 
 

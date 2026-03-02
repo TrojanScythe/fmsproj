@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>">
     <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="Password">
-    <button type="subm  it">Register</button>
+    <button type="submit">Register</button>
 </form>
 <?php
 // Display errors
