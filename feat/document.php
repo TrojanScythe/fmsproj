@@ -45,7 +45,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     </button>
     <button onclick="window.location.href='/fms/feat/folder.php'">
         <img src="/fms/uploads/icon/folder.png" alt="Folders" title="Folders">
-    </button>
+    </button>         
     <button onclick="window.location.href='/fms/feat/document.php'">
         <img src="/fms/uploads/icon/doc.png" alt="Document" title="Document">
     </button>
