@@ -40,7 +40,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 <!-- HTML -->
   <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 <div class="sidebar" id="sidebar">
-    <button onclick="window.location.href='/fms/feat/dashboard.php'">
+    <button onclick="window.location.href='/fms/dashboard.php'">
         <img src="/fms/uploads/icon/db.png" alt="Dashboard" title="Dashboard">
     </button>
     <button onclick="window.location.href='/fms/feat/folder.php'">
@@ -52,7 +52,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     <button onclick="window.location.href='/fms/feat/media.php'">
         <img src="/fms/uploads/icon/media.png" alt="Media" title="Media">
     </button>
-    <button onclick="window.location.href='/fms/feat.favorite.php'">
+    <button onclick="window.location.href='/fms/feat/favorite.php'">
         <img src="/fms/uploads/icon/fav.png" alt="Favorite" title="Favorite">
     </button>
     <button onclick="window.location.href='/fms/users/faculty.php'">
@@ -77,11 +77,6 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 
 
 
-<div class="center-content">
-    <div class="tbox">
-    <h1>what do i do here now</h1>
-    </div>
-</div>
 
 </body>
 </html>

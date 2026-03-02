@@ -44,16 +44,16 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     <button onclick="window.location.href='/fms/dashboard.php'">
         <img src="/fms/uploads/icon/db.png" alt="Dashboard" title="Dashboard">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/fms/feat/folder.php'">
         <img src="/fms/uploads/icon/folder.png" alt="Folders" title="Folders">
-    </button>
-    <button onclick="window.location.href='/'">
+    </button>         
+    <button onclick="window.location.href='/fms/feat/document.php'">
         <img src="/fms/uploads/icon/doc.png" alt="Document" title="Document">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/fms/feat/media.php'">
         <img src="/fms/uploads/icon/media.png" alt="Media" title="Media">
     </button>
-    <button onclick="window.location.href='/'">
+    <button onclick="window.location.href='/fms/feat/favorite.php'">
         <img src="/fms/uploads/icon/fav.png" alt="Favorite" title="Favorite">
     </button>
     <button onclick="window.location.href='/fms/users/faculty.php'">
@@ -76,13 +76,6 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 
 
 
-
-
-<div class="center-content">
-    <div class="tbox">
-    <h1>what do i do here now</h1>
-    </div>
-</div>
 
 </body>
 </html>
