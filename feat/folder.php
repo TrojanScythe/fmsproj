@@ -75,10 +75,10 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
         });
 </script>
 
-<div class="center-box">
 <div class="explorer-container">
     <div class="upload-header">
-        <button class="upload-btn">Upload +</button>
+        <button class="upload-btn">Upload</button>
+        <button class="upload-btn">+</button>
         <!-- or your search bar / other controls -->
     </div>
     
@@ -103,7 +103,6 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
             <div class="folder-actions">
                 <span class="action-icon">★</span>
                 <span class="action-icon">👁</span>
-                <div class="progress-bar"></div>
                 <span class="action-icon">⋯</span>
             </div>
         </div>
