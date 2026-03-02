@@ -238,6 +238,7 @@
    
             .main-content {
                 flex: 1;
-                padding: 100px;
+                padding: 70px;
                 margin-left: 0; /* no shift by default */
+                margin-bottom: 50px;
             }
