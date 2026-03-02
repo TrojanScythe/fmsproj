@@ -91,7 +91,7 @@
                 background: transparent;
                 outline: none;
                 padding: 2px;
-                font-size: 1.3rem;
+                font-size: 1rem;
                 width: 100%;
                 margin-top: 7px;
             }
@@ -238,6 +238,6 @@
    
             .main-content {
                 flex: 1;
-                padding: 30px;
+                padding: 70px;
                 margin-left: 0; /* no shift by default */
             }
