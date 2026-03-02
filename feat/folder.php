@@ -79,7 +79,6 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     <div class="upload-header">
         <button class="upload-btn">Upload</button>
         <button class="upload-btn">+</button>
-        <!-- or your search bar / other controls -->
     </div>
     
     <div class="folder-list">
