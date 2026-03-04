@@ -251,7 +251,7 @@
             table {
                 width: 100%;
                 border-collapse: collapse;
-                background: rgba(152, 176, 227, 0.838);     /* semi-transparent white */
+                background: rgba(215, 234, 255, 0.838);     /* semi-transparent white */
                 backdrop-filter: blur(12px);               /* frosted glass blur */
                 -webkit-backdrop-filter: blur(12px);       /* Safari support */
                 border-radius: 12px;
