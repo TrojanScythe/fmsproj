@@ -107,10 +107,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .login-box button {
             width: 100%;
             padding: 12px;
-            background: #6a11cb;
+            background: #310a64;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 23px;
             font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
@@ -140,6 +140,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             from { opacity: 0; transform: translateY(-15px); }
             to   { opacity: 1; transform: translateY(0); }
         }
+        h1 {
+            font-size: 1.3rem;
+            font-weight: bolder;
+        }
     </style>
 
 </head>
@@ -151,10 +155,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="login-box"
-<h2 style="text-align:center;">Register</h2>
+<h1 style="text-align:center;">Register</h2>
 <form method="post" action="">
-    <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>">
-    <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email); ?>">
+    <input type="text" name="username" placeholder="✉︎ Username" value="<?php echo htmlspecialchars($username); ?>">
+    <input type="email" name="email" placeholder="🔒︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="Password">
     <button type="submit">Register</button>
 </form>
