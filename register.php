@@ -141,8 +141,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             to   { opacity: 1; transform: translateY(0); }
         }
         .h1 {
-            font-size: 1.3rem;
-            font-weight: bolder;
+            font-size: 32px; 
+            font-weight: 900; 
+            color: #310a64; 
+            margin-bottom: 10px;
+            display: block;
         }
         .hyperlink {
             display: block;
