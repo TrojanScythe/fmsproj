@@ -161,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
+    <a onclick="window.location.href='/fms/login.php'">Already have an account? Login</a>
 </form>
 <?php
 // Display errors
