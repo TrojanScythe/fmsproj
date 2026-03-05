@@ -1,4 +1,4 @@
-        body {
+       body {
             margin: 0 !important;
             padding: 0 !important;
             font-family: Arial, sans-serif !important;
@@ -12,7 +12,7 @@
 .center-content {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     min-height: calc(100vh - 60px);
     width: 100%;
     padding-top: 60px;
@@ -72,30 +72,42 @@
 
             .search-bar {
                 display: flex;
-                align-items: center;
+                align-items: center; /* Vertically centers the text and button */
                 background: #d8dfee;
-                padding: 2px 18px;
-                border-radius: 10px;
+                padding: 0 15px;      /* Use horizontal padding only */
+                border-radius: 12px;
                 width: 300px;
-                max-width: 95%;
+                height: 38px;        /* Fixed height ensures perfect centering */
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border: 1.5px solid transparent;
             }
-   
+
+            .search-bar input {
+                border: none;
+                background: transparent;
+                outline: none;
+                font-size: 0.95rem;
+                width: 100%;
+                color: #444;
+                padding: 0;          /* Remove padding that pushes text up */
+                margin: 0;           /* Remove default margins */
+                display: flex;
+                align-items: center;
+            }
             .search-container {
                 position: fixed;
                 top: 12px; 
                 left: 70px; 
                 z-index: 1000;
             }
-           .search-bar input {
-                border: none;
-                background: transparent;
-                outline: none;
-                padding: 2px;
-                font-size: 0.95rem;
+            .search-bar form {
+                display: flex;
+                align-items: center;
                 width: 100%;
-                margin-top: 3px;
+                height: 100%;
+                margin: 0;
+                padding: 0;
             }
-
 
             .search-bar button {
                 border: none;
@@ -104,10 +116,16 @@
                 font-size: 16px;
                 padding: 2px 3px;
             }
-            .search-bar button:hover {
-                color: #007bff;
+            .search-bar:hover {
+                background: #e2e8f3;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
+            .search-bar:focus-within {
+                background: #fff;
+                border-color: #007bff;
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+            }
 
 
             /* Dropdown container */
@@ -127,6 +145,7 @@
                 cursor: pointer;
                 border: 2px solid #393939;
                 margin-right: 30px;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
             }
                                    
             .dropbtn {
@@ -141,7 +160,6 @@
             }
 
             .dropdown-content {
-                display: none;
                 position: absolute;
                 background: linear-gradient(50deg, rgb(159, 174, 255), rgb(128, 189, 255));
                 right: 0;
@@ -151,6 +169,12 @@
                 border-radius: 15px;
                 z-index: 1000;
                 transition: all 0.5s ease-in-out; 
+                display: block; /* We will use opacity for the effect */
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(10px); /* Start slightly lower */
+                transition: all 0.4s ease;
+                pointer-events: none; /* Prevent clicking while hidden */
             }
 
             .dropdown-content a {
@@ -170,11 +194,15 @@
                 border-radius: 15px;
             }
 
-            .dropdown:hover .dropdown-content {
-                display: block;
-                transition: all 0.5s ease-in-out;   
-                border-radius: 15px; 
-            }
+                .dropdown:hover .dropdown-content {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translateY(0); /* Slide up into place */
+                    pointer-events: auto;
+                    display: block;
+                    transition: all 0.5s ease-in-out;   
+                    border-radius: 15px; 
+                }
 
 
             /* SIDEBARRRRR */
@@ -200,6 +228,7 @@
 
             .sidebar.active {
                 left: 0;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
             }
 
             .sidebar button {

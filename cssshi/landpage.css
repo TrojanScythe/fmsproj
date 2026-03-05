@@ -1,0 +1,158 @@
+
+:root {
+    --bg-gradient: linear-gradient(to bottom, #3d3d4f, #636972);
+    --nav-bg: rgba(25, 25, 35, 0.6);
+    --text-main: #ffffff;
+    --text-muted: #a29f9f;
+    --text-nav: #ffffffcc;
+    --btn-login-bg: #000;
+    --btn-signup-bg: #fff;
+    --btn-signup-text: #000;
+    --icon-color: #ffffffcc;
+}
+
+
+body.light-mode {
+    --bg-gradient: linear-gradient(to bottom, #706081, #b3c2dd);
+    --nav-bg: rgba(240, 240, 250, 0.8);
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --text-nav: #333333;
+    --btn-login-bg: #222;
+    --btn-signup-bg: #f0f0f0;
+    --btn-signup-text: #222;
+    --icon-color: #333333;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient) !important; /* Uses the variable */
+    color: var(--text-main);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.fade-in {
+    animation: fadeInPage 0.6s ease forwards;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* 4. NAVBAR */
+.navbar {
+    width: 95%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: background 0.0s ease;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    margin-right: 35px;
+    color: var(--text-nav);
+    font-size: 1.05rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* 5. NAV RIGHT & BUTTONS */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dark-mode-icon {
+    font-size: 22px;
+    color: var(--icon-color);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-login {
+    padding: 11px 26px;
+    background: var(--btn-login-bg);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-signup {
+    padding: 8px 18px;
+    background: var(--btn-signup-bg);
+    color: var(--btn-signup-text);
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* 6. HERO SECTION */
+.hero {
+    text-align: center;
+    padding-top: 180px;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero p {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-muted);
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.btn-get-started {
+    padding: 14px 40px;
+    background: linear-gradient(to right, #6a92db, #689ac2);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    animation: fadeIn 2.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,4 +1,4 @@
-        body {
+       body {
             margin: 0 !important;
             padding: 0 !important;
             font-family: Arial, sans-serif !important;
@@ -8,14 +8,14 @@
             align-items: unset !important;
             height: auto !important;
         }
-/* Main content adjustments */
+
 .center-content {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 60px); /* Account for navbar height */
+    align-items: center; 
+    min-height: calc(100vh - 60px);
     width: 100%;
-    padding-top: 60px; /* Account for fixed navbar */
+    padding-top: 60px;
 }
         
 .tbox {
@@ -31,10 +31,10 @@
         /* Top navbar */
 .top-nav {
     width: 100%;
-    height: 65px; /* Fixed height */
+    height: 70px;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Changed to flex-end to push content to right */
+    justify-content: flex-end;
     background: linear-gradient(90deg, #cbbade, #a6bde7);
     padding: 0 12px;
     border-bottom: 1px solid #ccc;
@@ -43,13 +43,13 @@
     z-index: 1000;
 }
 
-            /* Logo */
+ 
             .top-nav .logo {
             font-size: 1.4rem;
             font-weight: bold;
             }
 
-            /* Menu links */
+
             .top-nav .menu a {
             margin-left: 50px;
             text-decoration: none;
@@ -61,52 +61,71 @@
             .top-nav .menu a:hover {
             color: #007bff;     
             }
-                        /* Make menu items flex nicely */
+                       
             .menu {
-                margin-left: 45px; /* Space before dropdown */
+                margin-left: 45px;
             }
             .nav-left {
                 display: flex;
                 align-items: center;
             }
-            /* Search bar inside navbar */
+
             .search-bar {
                 display: flex;
-                align-items: center;
+                align-items: center; /* Vertically centers the text and button */
                 background: #d8dfee;
-                padding: 6px 12px;
-                border-radius: 10px;
-                width: 250px;
-                max-width: 100%;
+                padding: 0 15px;      /* Use horizontal padding only */
+                border-radius: 12px;
+                width: 300px;
+                height: 38px;        /* Fixed height ensures perfect centering */
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border: 1.5px solid transparent;
             }
-            /* Search bar container - positioned beside sidebar button */
-            .search-container {
-                position: fixed;
-                top: 12px; /* Same level as toggle button */
-                left: 70px; /* Positioned beside the sidebar button */
-                z-index: 1000;
-            }
-           .search-bar input {
+
+            .search-bar input {
                 border: none;
                 background: transparent;
                 outline: none;
-                padding: 6px;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 width: 100%;
+                color: #444;
+                padding: 0;          /* Remove padding that pushes text up */
+                margin: 0;           /* Remove default margins */
+                display: flex;
+                align-items: center;
             }
-
+            .search-container {
+                position: fixed;
+                top: 12px; 
+                left: 70px; 
+                z-index: 1000;
+            }
+            .search-bar form {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
 
             .search-bar button {
                 border: none;
                 background: none;
                 cursor: pointer;
                 font-size: 16px;
-                padding: 4px 8px;
+                padding: 2px 3px;
             }
-            .search-bar button:hover {
-                color: #007bff;
+            .search-bar:hover {
+                background: #e2e8f3;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
 
+            .search-bar:focus-within {
+                background: #fff;
+                border-color: #007bff;
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+            }
 
 
             /* Dropdown container */
@@ -114,6 +133,8 @@
                 position: relative;
                 display: flex;
                 align-items: center;
+                border-radius: 15px;
+                
             }
 
             .user-icon {
@@ -124,26 +145,36 @@
                 cursor: pointer;
                 border: 2px solid #393939;
                 margin-right: 30px;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
             }
-                                    /* Dropdown button (Profile link) */
+                                   
             .dropbtn {
                 text-decoration: none;
                 color: #333;
                 font-size: 1rem;
+                font: bold; 
                 padding: 8px 12px;
                 cursor: pointer;
+                transition: all 0.5s ease-in-out; 
+                border-radius: 15px;
             }
 
             .dropdown-content {
-                display: none;
                 position: absolute;
-                background-color: white;
+                background: linear-gradient(50deg, rgb(159, 174, 255), rgb(128, 189, 255));
                 right: 0;
-                top: 45px;
-                min-width: 150px;
+                top: 35px;
+                min-width: 160px;
                 box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-                border-radius: 8px;
+                border-radius: 15px;
                 z-index: 1000;
+                transition: all 0.5s ease-in-out; 
+                display: block; /* We will use opacity for the effect */
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(10px); /* Start slightly lower */
+                transition: all 0.4s ease;
+                pointer-events: none; /* Prevent clicking while hidden */
             }
 
             .dropdown-content a {
@@ -151,16 +182,27 @@
                 padding: 10px;
                 text-decoration: none;
                 color: #333;
+                font: bold; 
+                transition: all 0.5s ease-in-out; 
+                border-radius: 15px;
             }
 
             .dropdown-content a:hover {
-                background-color: #f1f1f1;
+                background: linear-gradient(30deg, rgb(124, 152, 186), rgb(146, 179, 228));
                 color: #007bff;
+                transition: all 0.5s ease-in-out; 
+                border-radius: 15px;
             }
 
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
+                .dropdown:hover .dropdown-content {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translateY(0); /* Slide up into place */
+                    pointer-events: auto;
+                    display: block;
+                    transition: all 0.5s ease-in-out;   
+                    border-radius: 15px; 
+                }
 
 
             /* SIDEBARRRRR */
@@ -169,30 +211,30 @@
                 width: 90px;
                 background: linear-gradient(34deg, #857a91, #7d8eae);
                 padding: 10px;
-                margin-top: 70px;
+                margin-top: 75px;
                 box-shadow: 2px 0 5px rgba(0,0,0,0.1);
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                position: fixed;       /* overlay mode */
+                position: fixed;       
                 top: 0;
-                left: -200px;          /* hidden initially */
+                left: -200px;         
                 height: 100%;
                 transition: left 0.3s;
                 z-index: 1000;
                 border-radius: 15px;
             }
 
-            /* Sidebar visible */
+
             .sidebar.active {
                 left: 0;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
             }
 
-            /* Sidebar buttons */
             .sidebar button {
                 padding: 8px;
                 border: none;
-                background: none;       /* no background color */
+                background: none;      
                 cursor: pointer;
                 border-radius: 8px;
                 display: flex;
@@ -208,14 +250,14 @@
             }
 
             .sidebar button:hover {
-                transform: scale    (1.1);   /* slight zoom on hover */
-                background: rgba(255,255,255,0.1);  /* subtle highlight */
+                transform: scale    (1.1);   
+                background: rgba(255,255,255,0.1);  
             }
 
             /* Toggle button */
 .toggle-btn {
     position: fixed;
-    top: 12px; /* Adjusted to align with navbar */
+    top: 12px; 
     left: 14px;
     z-index: 1100;
     font-size: 24px;
@@ -227,12 +269,16 @@
     cursor: pointer;
 }
 
-            /* Main content with some padding */
+   
             .main-content {
                 flex: 1;
-                padding: 30px;
+                padding: 70px;
                 margin-left: 0; /* no shift by default */
+                margin-bottom: 100px;
             }
+
+
+            /* PLACE THE INTENDED CSS TABLE FOR FOLDER HERE BELOW*/
             /* INTENDED FUCNTIONMNDFNNDNDND
             ____ FACULTY MEMBER FETCHING*/
               /* Users table */

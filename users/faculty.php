@@ -26,10 +26,11 @@
 <div class="top-nav">
     <nav>
         <!-- Menu items if any -->
-         <div class="search-container">
-        <div class="search-bar">
+        <div class="search-container">
+            <div class="search-bar">
+            <form action="/fms/search/search.php" method="GET">
                 <input type="text" placeholder="⌕ Type here to search">
-            <button type="submit">⌕</button>
+            </form>
             </div>
         </div>
     </nav>

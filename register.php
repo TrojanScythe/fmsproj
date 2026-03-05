@@ -140,12 +140,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             from { opacity: 0; transform: translateY(-15px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-        .h1 {
+        .bum {
             font-size: 32px; 
             font-weight: 900; 
             color: #310a64; 
             margin-bottom: 10px;
             display: block;
+            style="text-align:center"
         }
         .hyperlink {
             display: block;
@@ -158,8 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .hyperlink:hover {
-            color: #1a5ed9; /* Slightly darker on hover */
-            text-decoration: underline; /* Adds underline back on hover */
+            color: #1a5ed9; 
+            text-decoration: underline; 
         }
 
     </style>
@@ -172,8 +173,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<div class="login-box"
-<h1 style="text-align:center;" class="h1">Sign-Up</h1>
+<div class="login-box">
+<p class="bum">Sign-Up</p>
 <form method="post" action="">
     <input type="text" name="username" placeholder="@ Username" value="<?php echo htmlspecialchars($username); ?>">
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">

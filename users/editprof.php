@@ -94,29 +94,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- MAIN CONTENT -->
 <div class="main-content">
-    <div class="container">
+    <div class="container profile-card">
+        <div class="profile-header">
+            <div class="avatar-container">
+                <img src="path_to_default_avatar.png" class="avatar">
+                <div class="plus-icon">+</div>
+            </div>
+        </div>
+
         <h2>Edit Profile</h2>
 
         <?php if(isset($message)) echo "<p class='message'>{$message}</p>"; ?>
 
         <form method="post">
-            <label>Full Name:</label>
-            <input type="text" name="full_name" value="<?= htmlspecialchars($user['full_name']) ?>">
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" name="full_name" value="<?= htmlspecialchars($user['full_name']) ?>">
+            </div>
 
-            <label>Bio:</label>
-            <textarea name="bio" rows="4"><?= htmlspecialchars($user['bio']) ?></textarea>
+            <div class="form-group">
+                <label>Role:</label>
+                <input type="text" name="role" value="<?= htmlspecialchars($user['role'] ?? '') ?>" placeholder="e.g. Faculty">
+            </div>
 
-            <label>Notes / Broadcast:</label>
-            <textarea name="notes" rows="4"><?= htmlspecialchars($user['notes']) ?></textarea>
+            <div class="form-group">
+                <label>Contact:</label>
+                <input type="text" name="contact" value="<?= htmlspecialchars($user['contact'] ?? '') ?>">
+            </div>
+
+            <div class="form-group">
+                <label> Email:</label>
+                <input type="text" name="bio" value="<?= htmlspecialchars($user['bio'] ?? '') ?>">
+            </div>
+
+            <div class="form-group">
+                <label>Notes / Broadcast:</label>
+                <textarea name="notes" rows="4"><?= htmlspecialchars($user['notes']) ?></textarea>
+            </div>
 
             <button type="submit" class="submit-btn">Update Profile</button>
         </form>
 
-        <a href="/fms/users/viewprof.php" class="nav-link">View My Profile</a>
-        <a href="/fms/dashboard.php" class="nav-link">Back to Dashboard</a>
+        <div class="footer-links">
+            <a href="/fms/users/viewprof.php" class="nav-link">View My Profile</a>
+            <a href="/fms/dashboard.php" class="nav-link">Back to Dashboard</a>
+        </div>
     </div>
 </div>
-
 <!-- JS -->
 <script>
 function toggleSidebar() {

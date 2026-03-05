@@ -30,44 +30,49 @@ if (!$user) {
 <html>
 <head>
     <title><?= htmlspecialchars($user['full_name'] ?: $user['username']) ?>'s Profile</title>
-    <style>
-        body { font-family: Arial; background: linear-gradient(135deg,#706081,#b3c2dd); margin:0; padding:0; }
-        .container { max-width: 500px; margin: 60px auto; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 12px 25px rgba(0,0,0,0.2);}
-        h2 { text-align:center; margin-bottom: 20px; }
-        .field { margin-bottom: 15px; }
-        .label { font-weight:bold; margin-bottom: 5px; display:block; }
-        .value { padding: 10px; background:#f9f9f9; border-radius:5px; }
-        .nav-link { display:block; margin-top:10px; text-align:center; text-decoration:none; color:#333; }
-        .nav-link:hover { color:#007bff; }
-    </style>
+    <link rel="stylesheet" href="/fms/users/viewprof.css"></link>
 </head>
 <body>
 
-<div class="container">
-    <h2><?= htmlspecialchars($user['full_name'] ?: $user['username']) ?>'s Profile</h2>
+<div class="main-content">
+    <div class="container profile-card">
+        <div class="profile-header">
+            <div class="avatar-container">
+                <img src="path_to_avatar.png" class="avatar">
+            </div>
+        </div>
 
-    <div class="field">
-        <span class="label">Username:</span>
-        <span class="value"><?= htmlspecialchars($user['username']) ?></span>
+        <h2><?= htmlspecialchars($user['full_name'] ?: $user['username']) ?>'s Profile</h2>
+
+        <div class="profile-details">
+            <div class="form-group">
+                <label>Username:</label>
+                <div class="view-value"><?= htmlspecialchars($user['username']) ?></div>
+            </div>
+
+            <div class="form-group">
+                <label>Full Name:</label>
+                <div class="view-value"><?= htmlspecialchars($user['full_name']) ?></div>
+            </div>
+
+            <div class="form-group">
+                <label>Bio / Role:</label>
+                <div class="view-value"><?= nl2br(htmlspecialchars($user['bio'])) ?></div>
+            </div>
+
+            <div class="form-group">
+                <label>Notes / Broadcast:</label>
+                <div class="notes-box">
+                    <?= nl2br(htmlspecialchars($user['notes'])) ?: '<span style="color:#ccc;">No broadcast notes available.</span>' ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="../users/faculty.php" class="nav-link">Back to Faculty</a>
+            <a href="../dashboard.php" class="nav-link">Back to Dashboard</a>
+        </div>
     </div>
-
-    <div class="field">
-        <span class="label">Full Name:</span>
-        <span class="value"><?= htmlspecialchars($user['full_name']) ?></span>
-    </div>
-
-    <div class="field">
-        <span class="label">Bio:</span>
-        <span class="value"><?= nl2br(htmlspecialchars($user['bio'])) ?></span>
-    </div>
-
-    <div class="field">
-        <span class="label">Notes / Broadcast:</span>
-        <span class="value"><?= nl2br(htmlspecialchars($user['notes'])) ?></span>
-    </div>
-
-    <a href="../users/faculty.php" class="nav-link">Back to Faculty</a>
-    <a href="../dashboard.php" class="nav-link">Back to Dashboard</a>
 </div>
 
 </body>
