@@ -173,9 +173,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
     <a onclick="window.location.href='/fms/login.php'" class="dcp">Already have an account? Login</a>
-<?php
+
 </form>
-   
+<?php
 // Display errors
 if (!empty($errors)) {
     echo '<div class="error"><ul>';
