@@ -144,36 +144,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1.3rem;
             font-weight: bolder;
         }
-        .dropdown-content {
-                display: none;
-                position: absolute;
-                background: linear-gradient(50deg, rgb(159, 174, 255), rgb(128, 189, 255));
-                right: 0;
-                top: 35px;
-                min-width: 160px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-                border-radius: 15px;
-                z-index: 1000;
-                transition: all 0.5s ease-in-out; 
-            }
-        .dropdown-content a {
-                display: block;
-                padding: 10px;
-                text-decoration: none;
-                color: #333;
-                font: bold; 
-                transition: all 0.5s ease-in-out; 
-                border-radius: 15px;
-                margin-top: 10px;
-            }
-
-        .dropdown-content a:hover {
-                background: linear-gradient(30deg, rgb(124, 152, 186), rgb(146, 179, 228));
-                color: #007bff;
-                transition: all 0.5s ease-in-out; 
-                border-radius: 15px;
-            }
-        
+        .dcp {
+            align-items: center;
+            margin-top: 15px;
+        }
+        .dcp a {
+            color: #2575fc;
+            font-size: 1rem;
+        }
+        .dcp a:hover {
+            color: #1c4084;
+        }
     </style>
 
 </head>
@@ -191,9 +172,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
-</form>
-    <a onclick="window.location.href='/fms/login.php'" class="dropdown-content">Already have an account? Login</a>
+    <a onclick="window.location.href='/fms/login.php'" class="dcp">Already have an account? Login</a>
 <?php
+</form>
+   
 // Display errors
 if (!empty($errors)) {
     echo '<div class="error"><ul>';
