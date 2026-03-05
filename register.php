@@ -146,7 +146,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .dcp {
             align-items: center;
-            margin-top: 15px;
+            margin-top: 40px;
+            font-size: 16px;
+            cursor: pointer;
         }
         .dcp a {
             color: #2575fc;
@@ -172,9 +174,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
-    <a onclick="window.location.href='/fms/login.php'" class="dcp">Already have an account? Login</a>
-
 </form>
+<a onclick="window.location.href='/fms/login.php'" class="dcp">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
