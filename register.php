@@ -144,19 +144,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1.3rem;
             font-weight: bolder;
         }
-        .dcp {
-            align-items: center;
-            margin-top: 40px;
-            font-size: 16px;
+        .hyperlink {
+            display: block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #2575fc; /* Matching your blue theme */
+            text-decoration: none; /* Removes the default underline */
             cursor: pointer;
+            transition: 0.3s;
         }
-        .dcp a {
-            color: #2575fc;
-            font-size: 1rem;
+
+        .hyperlink:hover {
+            color: #1a5ed9; /* Slightly darker on hover */
+            text-decoration: underline; /* Adds underline back on hover */
         }
-        .dcp a:hover {
-            color: #1c4084;
-        }
+
     </style>
 
 </head>
@@ -175,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
 </form>
-<a onclick="window.location.href='/fms/login.php'" class="dcp">Already have an account? Login</a>
+<a onclick="window.location.href='/fms/login.php'" class="hyperlink">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
