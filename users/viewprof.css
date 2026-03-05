@@ -10,7 +10,7 @@ body {
 }
 
 .profile-card {
-    background: #ffffff;
+    background: linear-gradient(180deg, #d5d0db,#c3cfe4);
     width: 90%;
     max-width: 500px;
     margin: 80px auto 40px; /* Space for avatar */

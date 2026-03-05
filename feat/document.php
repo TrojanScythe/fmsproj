@@ -7,6 +7,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 <head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/fms/cssshi/dashboard.css"></link>
+    <link rel="stylesheet" type="text/css" href="/fms/feat/css/document.css"></link>
 </head>
 
 <body>
@@ -62,7 +63,10 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 
 <button id="toggleBtn" class="toggle-btn">&#9776;</button>
 
+<!-- documents -->
+ <div class="doc-container">
 
+ </div>
 <script>
     // JS: Toggle sidebar
         const sidebar = document.getElementById("sidebar");

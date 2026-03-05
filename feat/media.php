@@ -7,6 +7,7 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 <head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/fms/cssshi/dashboard.css"></link>
+    <link rel="stylesheet" type="text/css" href="/fms/feat/css/media.css"></link>
 </head>
 
 <body>
@@ -62,6 +63,48 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
 </div>
 
 <button id="toggleBtn" class="toggle-btn">&#9776;</button>
+
+<!-- MEDIA -->
+<div class="main-content">
+    <div class="media-container">
+        <div class="media-card">
+            <div class="media-placeholder">
+                </div>
+            <div class="media-footer">
+                <span class="date">mm/dd/yy</span>
+            </div>
+        </div>
+        
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/05/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/05/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/05/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/05/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/21/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">03/25/26</span></div>
+        </div>
+        <div class="media-card">
+            <div class="media-placeholder"></div>
+            <div class="media-footer"><span class="date">12/05/26</span></div>
+        </div>
+    </div>
+</div>
 
 
 <script>

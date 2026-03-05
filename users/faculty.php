@@ -19,6 +19,7 @@
 <head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="user/fty.css"></link>
+    <link rel="stylesheet" type="text/css" href="/fms/cssshi/dashboard.css"></link>
 </head>
 
 <body>

@@ -1,0 +1,48 @@
+
+.media-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle glass effect */
+    border-radius: 20px;
+    margin: 20px;
+}
+
+/* Individual Card Styling */
+.media-card {
+    background: #6f7786; /* Dark gray from your image */
+    aspect-ratio: 16 / 10; /* Maintains the rectangular shape */
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Placeholder for the image */
+.media-placeholder {
+    flex: 1;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Date Footer */
+.media-footer {
+    padding: 10px 20px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #000;
+    font-family: Arial, sans-serif;
+}

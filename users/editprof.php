@@ -9,25 +9,33 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-// Get logged-in user info
-$stmt = $conn->prepare("SELECT id, username, full_name, bio, notes FROM users WHERE username=?");
+// Get logged-in user info - Added role and contact to the SELECT
+$stmt = $conn->prepare("SELECT id, username, full_name, bio, notes, role, contact FROM users WHERE username=?");
 $stmt->bind_param("s", $_SESSION['username']);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
 // Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'] ?? '';
     $bio = $_POST['bio'] ?? '';
     $notes = $_POST['notes'] ?? '';
+    $role = $_POST['role'] ?? '';       // Added this
+    $contact = $_POST['contact'] ?? ''; // Added this
 
-    $stmt = $conn->prepare("UPDATE users SET full_name=?, bio=?, notes=? WHERE id=?");
-    $stmt->bind_param("sssi", $full_name, $bio, $notes, $user['id']);
+    // Updated the query to include role and contact
+    $stmt = $conn->prepare("UPDATE users SET full_name=?, bio=?, notes=?, role=?, contact=? WHERE id=?");
+    $stmt->bind_param("sssssi", $full_name, $bio, $notes, $role, $contact, $user['id']);
     $stmt->execute();
     $stmt->close();
 
     $message = "Profile updated successfully!";
+    
+    // Refresh user data so the form shows the new values immediately
+    $user['role'] = $role;
+    $user['contact'] = $contact;
 }
 ?>
 
@@ -72,10 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="top-nav">
     <nav>
         <!-- Menu items if any -->
-         <div class="search-container">
-        <div class="search-bar">
+        <div class="search-container">
+            <div class="search-bar">
+            <form action="/fms/search/search.php" method="GET">
                 <input type="text" placeholder="⌕ Type here to search">
-            <button type="submit">⌕</button>
+            </form>
             </div>
         </div>
     </nav>
