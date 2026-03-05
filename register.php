@@ -170,14 +170,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div class="login-box"
-<h1 style="text-align:center;" class="h1">Sign-Up</h2>
+<h1 style="text-align:center;" class="h1">Sign-Up</h1>
 <form method="post" action="">
     <input type="text" name="username" placeholder="@ Username" value="<?php echo htmlspecialchars($username); ?>">
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
 </form>
-<a onclick="window.location.href='/fms/login.php'" class="hyperlink">Already have an account? Login</a>
+<a href="/fms/login.php" class="hyperlink">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
