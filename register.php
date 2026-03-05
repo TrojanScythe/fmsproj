@@ -144,6 +144,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1.3rem;
             font-weight: bolder;
         }
+        .hl {
+            background-color: #1a5ed9;
+            font-size: 1rem;
+        }
+        .h1 a:hover {
+            background-color: #1a4696;
+        }
+        
     </style>
 
 </head>
@@ -161,8 +169,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="email" name="email" placeholder="✉︎ Email" value="<?php echo htmlspecialchars($email); ?>">
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
-    <a onclick="window.location.href='/fms/login.php'">Already have an account? Login</a>
 </form>
+    <a onclick="window.location.href='/fms/login.php'">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
