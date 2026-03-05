@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #1a5ed9;
             font-size: 1rem;
         }
-        .h1 a:hover {
+        .hl a:hover {
             background-color: #1a4696;
         }
         
@@ -170,7 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
 </form>
-    <a onclick="window.location.href='/fms/login.php'">Already have an account? Login</a>
+    <a onclick="window.location.href='/fms/login.php'" class="hl">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
