@@ -144,6 +144,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1.3rem;
             font-weight: bolder;
         }
+        .dropdown-content {
+                display: none;
+                position: absolute;
+                background: linear-gradient(50deg, rgb(159, 174, 255), rgb(128, 189, 255));
+                right: 0;
+                top: 35px;
+                min-width: 160px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+                border-radius: 15px;
+                z-index: 1000;
+                transition: all 0.5s ease-in-out; 
+            }
         .dropdown-content a {
                 display: block;
                 padding: 10px;
