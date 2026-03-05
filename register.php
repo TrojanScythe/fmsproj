@@ -144,13 +144,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 1.3rem;
             font-weight: bolder;
         }
-        .hl {
-            background-color: #1a5ed9;
-            font-size: 1rem;
-        }
-        .hl a:hover {
-            background-color: #1a4696;
-        }
+        .dropdown-content a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #333;
+                font: bold; 
+                transition: all 0.5s ease-in-out; 
+                border-radius: 15px;
+                margin-top: 10px;
+            }
+
+        .dropdown-content a:hover {
+                background: linear-gradient(30deg, rgb(124, 152, 186), rgb(146, 179, 228));
+                color: #007bff;
+                transition: all 0.5s ease-in-out; 
+                border-radius: 15px;
+            }
         
     </style>
 
@@ -170,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="password" placeholder="🔒︎ Password">
     <button type="submit">Register</button>
 </form>
-    <a onclick="window.location.href='/fms/login.php'" class="hl">Already have an account? Login</a>
+    <a onclick="window.location.href='/fms/login.php'" class="dropdown-content">Already have an account? Login</a>
 <?php
 // Display errors
 if (!empty($errors)) {
