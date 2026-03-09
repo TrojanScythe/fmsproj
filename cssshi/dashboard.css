@@ -126,7 +126,48 @@
                 border-color: #007bff;
                 box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
             }
+            
+            /* Container for the text-based dropdowns */
+            .nav-icons {
+                display: flex;
+                gap: 25px; /* Space between Notifications and Recents */
+                margin-right: 30px;
+            }
 
+            .drop-label {
+                text-decoration: none;
+                color: #333;
+                font-size: 0.95rem;
+                font-weight: bold;
+                cursor: pointer;
+                padding: 8px 12px;
+                transition: all 0.3s ease;
+            }
+
+            .drop-label:hover {
+                color: #007bff;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 10px;
+            }
+
+            /* Adjusting dropdown content for text labels */
+            .nav-icons .dropdown-content {
+                min-width: 200px; /* Slightly wider for notification text */
+                top: 33px; /* Adjusted to sit below the text label */
+                right: 0;
+                left: auto;
+            }
+
+            /* Specific styling for notification links */
+            .nav-icons .dropdown-content a {
+                font-size: 0.85rem;
+                font-weight: normal;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .nav-icons .dropdown-content a:last-child {
+                border-bottom: none;
+            }
 
             /* Dropdown container */
             .dropdown {

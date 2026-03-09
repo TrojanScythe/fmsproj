@@ -1,0 +1,20 @@
+.fav-container {
+    background: rgba(255, 255, 255, 0.18);     /* semi-transparent white */
+    backdrop-filter: blur(12px);               /* frosted glass blur */
+    -webkit-backdrop-filter: blur(12px);       /* Safari support */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 16px 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    min-height: 720px;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow: visible; /* Changed from hidden if it was set */
+    position: relative;
+
+}
+        /* Ensuring the favorite page looks consistent with folder view */
+.favorite-container { margin-left: 100px; padding: 40px; color: white; }
+.fav-star { color: #f3da35; text-decoration: none; font-size: 1.2rem; }
+.empty-msg { opacity: 0.5; text-align: center; margin-top: 50px; }

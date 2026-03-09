@@ -24,7 +24,20 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
             </div>
         </div>
     </nav>
-    
+    <div class="nav-icons">
+    <div class="dropdown">
+        <span class="drop-label">Notifications</span>
+        <div class="dropdown-content">
+            <a href="#">New document uploaded</a>
+        </div>
+    </div>
+
+        <div class="dropdown">
+            <span class="drop-label">Recents</span>
+            <div class="dropdown-content">
+            </div>
+        </div>
+    </div>
 
     <!-- User dropdown -->
     <div class="dropdown">

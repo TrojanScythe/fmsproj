@@ -42,7 +42,16 @@
     margin: 20px auto;
     max-width: 900px;
     min-height: 560px;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow: visible; /* Changed from hidden if it was set */
+    position: relative;
+
 }
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 
 /* Folder list wrapper */
 .folder-list {
@@ -116,6 +125,12 @@
 }
 
 /* Special styling for "Upload" area / header if needed */
+.upload-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 10; /* Ensures it sits above the glassmorphism blur */
+}
 .upload-header {
     display: flex;
     align-items: center;
@@ -135,7 +150,17 @@
     cursor: pointer;
     transition: all 0.2s;
 }
-
+.upload-submit-btn {
+    margin-left: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    animation: fadeIn 0.3s ease;
+}
 .upload-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(100, 80, 220, 0.35);
@@ -148,4 +173,93 @@
     border-radius: 4px;
     width: 60%;
     margin-left: 36px;     /* align under name */
+}
+/* 1. Hide the ugly default browser button */
+.hidden-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* 2. Style the Label to look like your Purple Button */
+.custom-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #7016d2; /* Matches your edit profile purple */
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(112, 22, 210, 0.3);
+}
+
+.custom-upload-btn:hover {
+    background: #5a11aa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(112, 22, 210, 0.4);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Makes a black icon white */
+}
+
+/* 3. Style the file name text */
+#file-name {
+    margin-left: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+}
+.file-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.upload-date {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: -2px;
+}
+
+/* Make the 'Eye' icon a link that doesn't look like one */
+.folder-actions a {
+    text-decoration: none;
+    color: inherit;
+}
+/* Make folders look slightly different */
+.folder-dir {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #f3da35; /* Yellow folder accent */
+}
+
+.folder-dir:hover {
+    background: rgba(243, 218, 53, 0.15);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.2);
+    padding: 5px 12px;
+    border-radius: 5px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    padding: 40px;
+    font-style: italic;
 }
