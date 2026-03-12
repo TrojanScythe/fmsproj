@@ -16,27 +16,47 @@
                 border: 1px solid rgba(255, 255, 255, 0.25);
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                background: rgba(215, 234, 255, 0.838);     /* semi-transparent white */
-                backdrop-filter: blur(12px);               /* frosted glass blur */
-                -webkit-backdrop-filter: blur(12px);       /* Safari support */
-                border-radius: 12px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            }
-            th, td {
-                padding: 12px;
-                border-bottom: 1px solid #ccc;
-                text-align: left;
-                border-radius: 2px;
-            }
-            th {
-                background: linear-gradient(180deg, rgb(115, 105, 171), rgb(134, 149, 179));
-                color: #fff;
-                
-            }
-            tr:hover { 
-                background: #f1f1f1;
-                border-radius: 10px;
-            }
+
+        
+        .member-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(243, 218, 53, 0.05);
+        }
+        .member-avatar {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid var(--accent);
+        }
+        .role-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--accent);
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .view-btn {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+        .view-btn:hover { background: var(--accent); color: #000; }

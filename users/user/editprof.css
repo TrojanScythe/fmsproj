@@ -466,3 +466,39 @@ profile-card {
 .footer-links {
     margin-top: 20px;
 }
+        .profile-card { 
+            background: var(--glass); border: 1px solid var(--border); 
+            backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; 
+            width: 100%; max-width: 600px; position: relative;
+        }
+
+        /* Profile Pic Styling */
+        .avatar-section { text-align: center; margin-bottom: 30px; position: relative; }
+        .avatar-wrapper { 
+            width: 120px; height: 120px; margin: 0 auto; position: relative; 
+            border: 3px solid var(--accent); border-radius: 50%; padding: 5px;
+        }
+        .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .upload-btn { 
+            position: absolute; bottom: 0; right: 0; background: var(--accent); 
+            color: black; width: 35px; height: 35px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; font-weight: bold; font-size: 20px; border: 3px solid #0f0f12;
+        }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group.full { grid-column: span 2; }
+        
+        label { display: block; font-size: 0.8rem; opacity: 0.6; margin-bottom: 8px; text-transform: uppercase; }
+        input, textarea { 
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); 
+            padding: 12px; border-radius: 12px; color: white; box-sizing: border-box;
+        }
+        input:focus { border-color: var(--accent); outline: none; }
+        
+        .submit-btn { 
+            width: 100%; padding: 15px; background: var(--accent); color: black; 
+            border: none; border-radius: 15px; font-weight: bold; cursor: pointer; margin-top: 10px;
+        }
+        .message { background: rgba(0, 255, 100, 0.1); color: #00ff64; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }

@@ -2,17 +2,25 @@
 session_start();
 require "../db.php";
 
-if (isset($_GET['file_id'])) {
-    $fileId = (int)$_GET['file_id'];
-    $userId = $_SESSION['user_id'];
-
-    // Toggle logic: 1 - current_status flips 0 to 1 and 1 to 0
-    $stmt = $conn->prepare("UPDATE media SET is_favorite = 1 - is_favorite WHERE id = ? AND user_id = ?");
-    $stmt->bind_param("ii", $fileId, $userId);
-    $stmt->execute();
-
-    // Redirect back to the same view (folder or root)
-    $fid = isset($_GET['fid']) ? "?fid=" . $_GET['fid'] : "";
-    header("Location: ../feat/folder.php" . $fid);
+if (!isset($_SESSION['user_id']) || !isset($_GET['file_id'])) {
+    header("Location: ../login.php");
     exit;
 }
+
+$user_id = $_SESSION['user_id'];
+$file_id = (int)$_GET['file_id'];
+
+// 1. Check if the link already exists
+$check = $conn->query("SELECT id FROM favorites WHERE user_id = $user_id AND file_id = $file_id");
+
+if ($check->num_rows > 0) {
+    // 2. If it exists, DELETE it (Unstar)
+    $conn->query("DELETE FROM favorites WHERE user_id = $user_id AND file_id = $file_id");
+} else {
+    // 3. If it doesn't, INSERT it (Star)
+    $conn->query("INSERT INTO favorites (user_id, file_id) VALUES ($user_id, $file_id)");
+}
+
+// 4. Send them back to the gallery they were looking at
+header("Location: " . $_SERVER['HTTP_REFERER']);
+exit;

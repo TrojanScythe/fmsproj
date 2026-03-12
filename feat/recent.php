@@ -26,28 +26,21 @@ echo '<link rel="stylesheet" type="text/css" href="dashboard.css" />';
     </nav>
     <div class="nav-icons">
     <div class="dropdown">
-        <span class="drop-label">Notifications</span>
-        <div class="dropdown-content">
-            <a href="#">New document uploaded</a>
-        </div>
-    </div>
-
-        <div class="dropdown">
-            <span class="drop-label">Recents</span>
-            <div class="dropdown-content">
-            </div>
-        </div>
-    </div>
+>
 
     <!-- User dropdown -->
     <div class="dropdown">
-        <img src="/fms/uploads/konata.png" class="user-icon">
+        <img src="<?= htmlspecialchars($user_avatar) ?>" class="user-icon" style="object-fit: cover; border: 1px solid var(--accent);">
+        
         <div class="dropdown-content">
+            <div style="padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--accent);">
+                Logged in as: <b><?= htmlspecialchars($_SESSION['username']) ?></b>
+            </div>
             <a href="/fms/users/viewprof.php">View Profile</a>
             <a href="/fms/users/editprof.php">Edit Profile</a>
-
-            <a href="/fms/logout.php">Logout</a>
+            <a href="/fms/logout.php" style="color: #ff4d4d;">Logout</a>
         </div>
+    </div>
     </div>
 </div>
 <!--sidebar-->

@@ -10,7 +10,7 @@
     }
 
     // Fetch all users
-    $result = $conn->query("SELECT id, username, email FROM users ORDER BY id ASC");
+    $result = $conn->query("SELECT id, username, email, role FROM users ORDER BY id ASC");
     ?>
 
 
@@ -39,11 +39,15 @@
 
     <!-- User dropdown -->
     <div class="dropdown">
-        <img src="/fms/uploads/konata.png" class="user-icon">
+        <img src="<?= htmlspecialchars($user_avatar) ?>" class="user-icon" style="object-fit: cover; border: 1px solid var(--accent);">
+        
         <div class="dropdown-content">
+            <div style="padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--accent);">
+                Logged in as: <b><?= htmlspecialchars($_SESSION['username']) ?></b>
+            </div>
             <a href="/fms/users/viewprof.php">View Profile</a>
             <a href="/fms/users/editprof.php">Edit Profile</a>
-            <a href="/fms/logout.php">Logout</a>
+            <a href="/fms/logout.php" style="color: #ff4d4d;">Logout</a>
         </div>
     </div>
 </div>
@@ -86,36 +90,24 @@
 
 <!--faculty members -->
 
- <div class="container">
-        <h2>All Faculty Members</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($result && $result->num_rows > 0): ?>
-                    <?php while($user = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($user['id']) ?></td>
-                        <td>
-                            <a href="/fms/users/viewprof.php?user_id=<?= $user['id'] ?>">
-                                 <?= htmlspecialchars($user['username']) ?>
-                            </a>
-                        </td>
-                        <td><?= htmlspecialchars($user['email']) ?></td>
-                        <td></td>
-                    </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr><td colspan="3">No users found.</td></tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+<div class="container">
+    <h2 style="color: var(--accent); margin-left: 20px;">Faculty & Staff Directory</h2>
+    
+    <div class="faculty-grid">
+        <?php while($row = $result->fetch_assoc()): 
+            $pic = !empty($row['profile_pic']) ? $row['profile_pic'] : '/fms/uploads/konata.png';
+        ?>
+            <div class="member-card">
+                <img src="<?= $pic ?>" class="member-avatar">
+                <div class="role-badge"><?= htmlspecialchars($row['role']) ?></div>
+                <h3 style="margin: 15px 0 5px;"><?= htmlspecialchars($row['full_name'] ?? $row['username']) ?></h3>
+                <p style="opacity: 0.5; font-size: 0.8rem;"><?= htmlspecialchars($row['email']) ?></p>
+                
+                <a href="/fms/users/viewprof.php?id=<?= $row['id'] ?>" class="view-btn">View Profile</a>
+            </div>
+        <?php endwhile; ?>
     </div>
+</div>
+
 </body>
 </html>

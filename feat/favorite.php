@@ -9,12 +9,16 @@ if (!isset($_SESSION['user_id'])) {
 
 $userId = $_SESSION['user_id'];
 
-// Fetch only favorited files for this specific user
+$u_res = $conn->query("SELECT profile_pic FROM users WHERE id = $userId")->fetch_assoc();
+$user_avatar = !empty($u_res['profile_pic']) ? $u_res['profile_pic'] : '/fms/uploads/konata.png';
+
+
 $fav_query = "SELECT media.*, users.full_name 
-              FROM media 
+              FROM favorites 
+              JOIN media ON favorites.file_id = media.id 
               JOIN users ON media.user_id = users.id 
-              WHERE media.is_favorite = 1 AND media.user_id = $userId 
-              ORDER BY upload_date DESC";
+              WHERE favorites.user_id = $userId 
+              ORDER BY media.upload_date DESC";
 
 $fav_result = $conn->query($fav_query);
 ?>
@@ -37,31 +41,26 @@ $fav_result = $conn->query($fav_query);
         <div class="search-container">
             <div class="search-bar">
                 <form action="/fms/search/search.php" method="GET">
-                    <input type="text" placeholder="⌕ Search your favorites...">
+                    <input type="text" name="q" placeholder="⌕ Search your favorites...">
                 </form>
             </div>
         </div>
     </nav>
     <div class="nav-icons">
-        <div class="dropdown">
-            <span class="drop-label">Notifications</span>
-            <div class="dropdown-content">
-                <a href="#">New document uploaded</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <span class="drop-label">Recents</span>
-            <div class="dropdown-content">
-            </div>
-        </div>
-    </div>  
+
 
     <div class="dropdown">
-        <img src="/fms/uploads/konata.png" class="user-icon">
+        <img src="<?= htmlspecialchars($user_avatar) ?>" class="user-icon" style="object-fit: cover; border: 1px solid var(--accent);">
+        
         <div class="dropdown-content">
+            <div style="padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--accent);">
+                Logged in as: <b><?= htmlspecialchars($_SESSION['username']) ?></b>
+            </div>
             <a href="/fms/users/viewprof.php">View Profile</a>
-            <a href="/fms/logout.php">Logout</a>
+            <a href="/fms/users/editprof.php">Edit Profile</a>
+            <a href="/fms/logout.php" style="color: #ff4d4d;">Logout</a>
         </div>
+    </div>
     </div>
 </div>
 

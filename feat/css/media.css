@@ -1,48 +1,150 @@
 
-.media-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.1); /* Subtle glass effect */
-    border-radius: 20px;
-    margin: 20px;
-}
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1); /* Subtle glass effect */
+            border-radius: 20px;
+            margin: 20px;
+            height: 290px;
+        }
 
-/* Individual Card Styling */
-.media-card {
-    background: #6f7786; /* Dark gray from your image */
-    aspect-ratio: 16 / 10; /* Maintains the rectangular shape */
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
+        /* Individual Card Styling */
+        .media-card {
+            background: #6f7786; /* Dark gray from your image */
+            aspect-ratio: 16 / 10; /* Maintains the rectangular shape */
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
 
-.media-card:hover {
-    transform: translateY(-5px);
-}
+        .media-card:hover {
+            transform: translateY(-5px);
+        }
 
-/* Placeholder for the image */
-.media-placeholder {
-    flex: 1;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
+        /* Placeholder for the image */
+        .media-placeholder {
+            flex: 1;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
 
-/* Date Footer */
-.media-footer {
-    padding: 10px 20px;
-    text-align: right;
-    background: rgba(0, 0, 0, 0.1);
-}
+        /* Date Footer */
+        .media-footer {
+            padding: 10px 20px;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.1);
+        }
 
-.date {
-    font-size: 0.8rem;
-    color: #000;
-    font-family: Arial, sans-serif;
-}
+        .date {
+            font-size: 0.8rem;
+            color: #000;
+            font-family: Arial, sans-serif;
+        }
+        .media-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 20px; 
+            padding: 20px;
+        }
+        .media-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .media-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        
+        .media-preview {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .media-footer {
+            padding: 10px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+        }
+        .file-name-label {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+            display: block;
+        }
+        .media-preview {
+            width: 100%;
+            height: 180px; 
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .media-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-hint {
+            position: absolute;
+            color: white;
+            font-size: 1.5rem;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .file-icon {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .media-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .view-btn {
+            text-decoration: none;
+            background: var(--accent);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .fav-btn {
+            font-size: 1.2rem;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .fav-btn:hover {
+            transform: scale(1.3);
+            color: #f3da35 !important;
+        }
+
+        .fav-btn:active {
+            transform: scale(0.9);
+        }

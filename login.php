@@ -1,6 +1,5 @@
 <?php
 require "db.php";
-session_start();
 
 $error = "";
 
@@ -12,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "All fields are required.";
     } else {
         $stmt = $conn->prepare(
-            "SELECT id, username, password FROM users WHERE username = ?"
+            "SELECT id, username, password, status, role FROM users WHERE username = ?"
         );
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -20,11 +19,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $user = $result->fetch_assoc();
 
         if ($user && password_verify($password, $user["password"])) {
-            // Store both username and id in session
-            $_SESSION["username"] = $user["username"];
-            $_SESSION["user_id"] = $user["id"];
-            header("Location: dashboard.php");
-            exit;
+            
+ 
+            if ($user['status'] === 'pending') {
+                $error = " <b>Access Pending:</b> Your account is awaiting administrator approval. Please check back later.";
+            } elseif ($user['status'] === 'rejected') {
+                $error = " <b>Access Denied:</b> Your registration request was declined by the admin.";
+            } else {
+
+                $_SESSION["username"] = $user["username"];
+                $_SESSION["user_id"] = $user["id"];
+                $_SESSION["role"] = $user["role"];
+                $_SESSION['login_success'] = true;
+
+                if ($user['role'] === 'Admin') {
+                    header("Location: /fmsadmin/index.php");
+                } else {
+                    header("Location: dashboard.php");
+                }
+                exit;
+            }
         } else {
             $error = "Invalid username or password.";
         }
@@ -60,8 +74,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #fff;  /* optional border */
-            background: #ffffff;        /* fallback background */
+            border: 3px solid #fff;     
+            background: #ffffff;            
+        }
+                .warning-box {
+            background: rgba(243, 218, 53, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
         }
 
     </style>
@@ -89,10 +116,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 class="register-btn">
             Create New Account
         </button>
-
         <?php if ($error): ?>
-            <p class="error" style="color:red;"><?php echo $error; ?></p>
-        <?php endif; ?>
+                <div class="warning-box">
+                    <span>⚠️</span>
+                    <div><?= $error ?></div>
+                </div>
+            <?php endif; ?>
     </form>
 </div>
 </body>

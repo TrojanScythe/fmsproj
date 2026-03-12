@@ -6,7 +6,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../login.php");
     exit;
 }
-
+$user_id = $_SESSION['user_id'];
+$user_query = $conn->query("SELECT profile_pic FROM users WHERE id = $user_id");
+$user_data = $user_query->fetch_assoc();
+$user_avatar = !empty($user_data['profile_pic']) ? $user_data['profile_pic'] : '/fms/uploads/konata.png';
 // 1. Get the current Folder ID from the URL (e.g., folder.php?fid=5)
 $current_folder_id = isset($_GET['fid']) ? (int)$_GET['fid'] : null;
 
@@ -64,11 +67,17 @@ $files_result = $conn->query($file_query);
         </div>
     </nav>
     <div class="dropdown">
-        <img src="/fms/uploads/konata.png" class="user-icon">
+        <img src="<?= htmlspecialchars($user_avatar) ?>" class="user-icon" style="object-fit: cover; border: 1px solid var(--accent);">
+        
         <div class="dropdown-content">
-            <a href="/fms/users/viewprof.php">Profile</a>
-            <a href="/fms/logout.php">Logout</a>
+            <div style="padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--accent);">
+                Logged in as: <b><?= htmlspecialchars($_SESSION['username']) ?></b>
+            </div>
+            <a href="/fms/users/viewprof.php">View Profile</a>
+            <a href="/fms/users/editprof.php">Edit Profile</a>
+            <a href="/fms/logout.php" style="color: #ff4d4d;">Logout</a>
         </div>
+    </div>
     </div>
 </div>
 

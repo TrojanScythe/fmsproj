@@ -1,41 +1,61 @@
 <?php
-echo '<link rel="stylesheet" type="text/css" href="editprof.css" />';
 session_start();
 require "../db.php";
 
 // Redirect if not logged in
-if (!isset($_SESSION['username'])) {
-    header("Location: fms /login.php");
+if (!isset($_SESSION['user_id'])) {
+    header("Location: /fms/login.php");
     exit;
 }
 
-// Get logged-in user info - Added role and contact to the SELECT
-$stmt = $conn->prepare("SELECT id, username, full_name, bio, notes, role, contact FROM users WHERE username=?");
-$stmt->bind_param("s", $_SESSION['username']);
+$userId = $_SESSION['user_id'];
+
+// 1. Fetch User Data
+$stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->bind_param("i", $userId);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-// Handle form submission
-
+// 2. Handle Form Submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'] ?? '';
     $bio = $_POST['bio'] ?? '';
     $notes = $_POST['notes'] ?? '';
-    $role = $_POST['role'] ?? '';       // Added this
-    $contact = $_POST['contact'] ?? ''; // Added this
+    $role = $_POST['role'] ?? '';
+    $contact = $_POST['contact'] ?? '';
+    $profile_pic = $user['profile_pic']; // Keep old one by default
 
-    // Updated the query to include role and contact
-    $stmt = $conn->prepare("UPDATE users SET full_name=?, bio=?, notes=?, role=?, contact=? WHERE id=?");
-    $stmt->bind_param("sssssi", $full_name, $bio, $notes, $role, $contact, $user['id']);
-    $stmt->execute();
-    $stmt->close();
+    // Handle Profile Picture Upload
+    if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === 0) {
+        $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/fms/uploads/profiles/";
+        if (!file_exists($targetDir)) mkdir($targetDir, 0777, true);
 
-    $message = "Profile updated successfully!";
+        $fileExt = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $newFileName = "user_" . $userId . "_" . time() . "." . $fileExt;
+        $targetFilePath = $targetDir . $newFileName;
+        
+        if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $targetFilePath)) {
+            $profile_pic = "/fms/uploads/profiles/" . $newFileName;
+        }
+    }
+
+    // Update Database
+    $stmt = $conn->prepare("UPDATE users SET full_name=?, bio=?, notes=?, role=?, contact=?, profile_pic=? WHERE id=?");
+    $stmt->bind_param("ssssssi", $full_name, $bio, $notes, $role, $contact, $profile_pic, $userId);
     
-    // Refresh user data so the form shows the new values immediately
-    $user['role'] = $role;
-    $user['contact'] = $contact;
+    if($stmt->execute()) {
+        $message = "Profile updated successfully!";
+        // Update local array for immediate display
+        $user['full_name'] = $full_name;
+        $user['role'] = $role;
+        $user['contact'] = $contact;
+        $user['bio'] = $bio;
+        $user['notes'] = $notes;
+        $user['profile_pic'] = $profile_pic;
+        $_SESSION['full_name'] = $full_name; // Sync session
+    }
+    $stmt->close();
 }
 ?>
 
@@ -45,7 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Edit Profile</title>
     <link rel="stylesheet" type="text/css" href="user/editprof.css"></link>
     <style>
-      
+        :root { --accent: #f3da35; --glass: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.1); }
+        body { background: #0f0f12; color: white; font-family: 'Inter', sans-serif; }
+        
+        .main-content { margin-left: 100px; padding: 40px; display: flex; justify-content: center; }
+
     </style>
 </head>
 <body>
@@ -76,6 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </button>
 </div>
 
+<button id="toggleBtn" class="toggle-btn">&#9776;</button>
+
 <!-- NAVBAR -->
 <div class="top-nav">
     <nav>
@@ -92,69 +118,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- User dropdown -->
     <div class="dropdown">
-        <img src="/fms/uploads/konata.png" class="user-icon">
+        <img src="<?= htmlspecialchars($user_avatar) ?>" class="user-icon" style="object-fit: cover; border: 1px solid var(--accent);">
+        
         <div class="dropdown-content">
+            <div style="padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--accent);">
+                Logged in as: <b><?= htmlspecialchars($_SESSION['username']) ?></b>
+            </div>
             <a href="/fms/users/viewprof.php">View Profile</a>
             <a href="/fms/users/editprof.php">Edit Profile</a>
-            <a href="/fms/logout.php">Logout</a>
+            <a href="/fms/logout.php" style="color: #ff4d4d;">Logout</a>
         </div>
     </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div class="main-content">
-    <div class="container profile-card">
-        <div class="profile-header">
-            <div class="avatar-container">
-                <img src="path_to_default_avatar.png" class="avatar">
-                <div class="plus-icon">+</div>
-            </div>
-        </div>
-
-        <h2>Edit Profile</h2>
-
-        <?php if(isset($message)) echo "<p class='message'>{$message}</p>"; ?>
-
-        <form method="post">
-            <div class="form-group">
-                <label>Full Name:</label>
-                <input type="text" name="full_name" value="<?= htmlspecialchars($user['full_name']) ?>">
+    <div class="profile-card">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="avatar-section">
+                <div class="avatar-wrapper">
+                    <img src="<?= htmlspecialchars($user['profile_pic']) ?>" class="avatar-img" id="preview">
+                    <label for="avatar-input" class="upload-btn">+</label>
+                    <input type="file" name="avatar" id="avatar-input" hidden accept="image/*">
+                </div>
+                <h2 style="margin: 15px 0 5px;"><?= htmlspecialchars($user['username']) ?></h2>
+                <p style="opacity: 0.5; font-size: 0.9rem;">Manage your public profile information</p>
             </div>
 
-            <div class="form-group">
-                <label>Role:</label>
-                <input type="text" name="role" value="<?= htmlspecialchars($user['role'] ?? '') ?>" placeholder="e.g. Faculty">
+            <?php if(isset($message)) echo "<div class='message'>$message</div>"; ?>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="full_name" value="<?= htmlspecialchars($user['full_name']) ?>">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" name="role" value="<?= htmlspecialchars($user['role'] ?? '') ?>" placeholder="e.g. Faculty">
+                </div>
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" name="contact" value="<?= htmlspecialchars($user['contact'] ?? '') ?>">
+                </div>
+                <div class="form-group">
+                    <label>Email / Bio</label>
+                    <input type="text" name="bio" value="<?= htmlspecialchars($user['bio'] ?? '') ?>">
+                </div>
+                <div class="form-group full">
+                    <label>Broadcast Note (Shows on Dashboard)</label>
+                    <textarea name="notes" rows="3"><?= htmlspecialchars($user['notes']) ?></textarea>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Contact:</label>
-                <input type="text" name="contact" value="<?= htmlspecialchars($user['contact'] ?? '') ?>">
+            <button type="submit" class="submit-btn">Save Changes</button>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="/fms/dashboard.php" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">← Back to Dashboard</a>
             </div>
-
-            <div class="form-group">
-                <label> Email:</label>
-                <input type="text" name="bio" value="<?= htmlspecialchars($user['bio'] ?? '') ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Notes / Broadcast:</label>
-                <textarea name="notes" rows="4"><?= htmlspecialchars($user['notes']) ?></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Update Profile</button>
         </form>
-
-        <div class="footer-links">
-            <a href="/fms/users/viewprof.php" class="nav-link">View My Profile</a>
-            <a href="/fms/dashboard.php" class="nav-link">Back to Dashboard</a>
-        </div>
     </div>
 </div>
-<!-- JS -->
+
 <script>
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('active');
-}
+    
+        // Toggle Sidebar
+    document.getElementById("toggleBtn").addEventListener("click", () => {
+        document.getElementById("sidebar").classList.toggle("active");
+    });
+
+    // Preview image before uploading
+    document.getElementById('avatar-input').onchange = function (evt) {
+        const [file] = this.files;
+        if (file) {
+            document.getElementById('preview').src = URL.createObjectURL(file);
+        }
+    }
 </script>
 
 </body>
